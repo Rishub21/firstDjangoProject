@@ -1,0 +1,56 @@
+{% extends "rango/base.html" %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+      {% if user.is_authenticated %}
+        <h1>Rango says... hello {{ user.username }}!</h1>
+        <li><a href = "/rango/logout/"> Log Out Here  </a> </li>
+        <li><a href="/rango/add_category/">Add a New Category</a></li>
+      {% else %}
+        <h1>Rango says... hello world!</h1>
+        <a href="/rango/register/">Register Here</a>
+        <a href = "/rango/login/"> Login Here </a>
+      {% endif %}
+
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        <a href="/rango/about/">About</a>
+        <a href = "/rango/risebase/">RiseBase</a>
+        <a href = "/rango/search/">Search</a>
+
+        <form class ="form-inline" method = "post" action= "/rango/">
+          {% csrf_token %}
+          <input class = "form-control" type ="TextField" name = "special_message">
+          <input class = "btn btn-primary" type = "submit" name = "messenger" value = "message">
+        </form>
+
+
+        {% if categories %}
+          <b>{{category_dict.numvisits}}</b>
+        {% endif %}
+
+        {% if message %}
+          <li> {{message.message}} </li>
+        {% endif %}
+
+        {% if my_messages %}
+          {% for message in my_messages %}
+            <li> {{message.message}} </li>
+          {% endfor %}
+        {% endif %}
+
+        <button  id ="likesbutton" name = "total likes" type = "button" totallikes = 0 > Total Likes </button>
+        <h2 id="likesheading"> 0 likes </h2>
+
+
+
+{% endblock %}

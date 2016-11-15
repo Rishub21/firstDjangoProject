@@ -1,0 +1,5 @@
+[2016-11-01 15:04:03,031: INFO/MainProcess] Connected to django://localhost//
+[2016-11-01 15:04:03,100: WARNING/MainProcess] /Users/anitanahar/abc/lib/python2.7/site-packages/celery/fixups/django.py:265: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+
+[2016-11-01 15:04:03,100: WARNING/MainProcess] w1@anitas-mbp-2.ncifcrf.gov ready.

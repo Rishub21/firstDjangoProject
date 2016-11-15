@@ -1,0 +1,71 @@
+{% extends "rango/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %} Search {% endblock %}
+
+{% block body_block %}
+
+  <div class="page-header">
+    <h1>Search with Rango</h1>
+  </div>
+
+  <div class="row">
+
+       <div class="panel panel-primary">
+           <br/>
+
+           <form class="form-inline" id="user_form" method="post" action="/rango/search/">
+               {% csrf_token %}
+               <!-- Display the search form elements here -->
+               <input class="form-control" type="text" size="50" name="query" value="" id="query" />
+               <input class="btn btn-primary" type="submit" name="submit" value="Search" />
+               <br />
+           </form>
+
+
+           {% if results_list %}
+               <ul>
+                   <form method = "post" action ="/rango/search/">
+                     {% csrf_token %}
+                     {% for diction in results_list %} <!--Dont include the () of the .values operator -->
+                        <li><a href = "https://" + "{{ diction.url }}"> <b>https://{{diction.url}}</b> </a>
+
+                          <input type = "checkbox" name = "checks" value = {{diction.title}}>
+
+
+                        </li>
+
+                     {% endfor %}
+
+                     <input class="form-control" type="text" size="50" name="nextval" value="" id="nextval" />
+
+                     <input class="btn btn-primary" type="submit" name="submit" value="Submit" />
+                  </form>
+
+
+
+               </ul>
+           {% else %}
+               <strong>There are no results present.</strong>
+           {% endif %}
+
+
+       </div>
+  </div>
+
+  {% if next_list %}
+    {% for next in next_list %}
+       <li> {{next}}</li>
+    {% endfor %}
+  {% else %}
+       <strong>There are no next present.</strong>
+  {% endif %}
+
+  {% if submitlist %}
+    {% for submit in submitlist %}
+      <li> {{submit}} </li>
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}
