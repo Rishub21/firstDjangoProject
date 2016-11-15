@@ -1,0 +1,1 @@
+Dynamic webpages actually generate differently according to user input and preferences 
