@@ -1,1 +1,0 @@
-ajax is an asynchronous protocall system that can dynamically update and generate content on a webpage by making background server request without having to refesh the entire page. 
