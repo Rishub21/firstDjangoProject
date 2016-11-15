@@ -1,1 +1,0 @@
-ajax is an asynchronous protocall system that allows you to dynaimcally update and generate parts of a webpage without a full refesh call to the server. In django it is implmented through the use of jquery.
