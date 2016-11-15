@@ -1,0 +1,2 @@
+Ajax is often implemented through the java script library known as jquery, at least in django. Jquery is capable of a whole host of fucnctionalities, not the least of which is its robust ability to construct event handlers. Y
+
